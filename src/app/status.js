@@ -184,16 +184,16 @@ function format_change(change, change_queue) {
                 if (reason.match(/merge conflict/)) {
                     image = 'black.png';
                 }
-                html += '<img src="' + image + '" title="Failing because ' + reason +'"/>';
+                html += '<img src="images/' + image + '" title="Failing because ' + reason +'"/>';
             } else {
-                html += '<img src="green.png" title="Succeeding"/>';
+                html += '<img src="images/green.png" title="Succeeding"/>';
             }
         }
         if (change._tree_branches.indexOf(i) !== -1) {
             if (change._tree_branches.indexOf(i) === change._tree_branches.length-1) {
-                html += '<img src="line-angle.png"/>';
+                html += '<img src="images/line-angle.png"/>';
             } else {
-                html += '<img src="line-t.png"/>';
+                html += '<img src="images/line-t.png"/>';
             }
         }
         html += '</td>';
