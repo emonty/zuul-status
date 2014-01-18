@@ -4,7 +4,7 @@
   "dependencies": {
     "jquery": "2.0.3",
     "jquery-visibility": "1.0.7",
-    "jquery-graphite": "https://github.com/prestontimmons/graphitejs",    
+    "jquery-graphite": "git://github.com/prestontimmons/graphitejs.git",    
     "flot": "0.8.2"
   }
 }
