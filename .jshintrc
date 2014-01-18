@@ -23,13 +23,12 @@
     "node": true,
     "browser": true,
     "esnext": true,
-    "bitwise": true,
-    "camelcase": true,
+    "bitwise": false,
+    "camelcase": false, // status.json has _ attributes
     "curly": true,
     "eqeqeq": true,
     "immed": true,
     "indent": 4,
-    "maxlen": 80,
     "latedef": true,
     "newcap": true,
     "noarg": true,
@@ -61,5 +60,9 @@
         "browser": false,
         "by": false,
         "element": false
-    }
+    },
+    "exported": [
+        "toggle_display_jobs",
+        "toggle_expand_by_default"
+    ]
 }
