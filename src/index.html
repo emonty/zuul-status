@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<!--
+ Licensed under the Apache License, Version 2.0 (the "License"); you may
+ not use this file except in compliance with the License. You may obtain
+ a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+ Unless required by applicable law or agreed to in writing, software
+ distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ License for the specific language governing permissions and limitations
+ under the License.
+-->
+<html id="ng-app" ng-app="zuul-status">
+<head>
+    <meta charset="utf-8">
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <title>Zuul Status</title>
+
+    <!-- build:js(bower_components) /js/libs.js -->
+    <script src="jquery/jquery.js"></script>
+    <script src="jquery-visibility/jquery-visibility.js"></script>
+    <script src="jquery-graphite/jquery-graphite.js"></script>
+    <!-- endbuild -->
+
+
+    <script type="text/javascript"
+	src="http://status.openstack.org/common.js"></script>
+
+    <script src="js/status.js"></script>
+
+    <!-- Framework CSS -->
+    <link rel="stylesheet" href="http://www.openstack.org/themes/openstack/css/blueprint/screen.css" type="text/css" media="screen, projection"/>
+    <link rel="stylesheet" href="http://www.openstack.org/themes/openstack/css/blueprint/print.css" type="text/css" media="print"/>
+
+    <!-- IE CSS -->
+    <!--[if lt IE 8]><link rel="stylesheet" href="http://www.openstack.org/blueprint/ie.css" type="text/css" media="screen, projection"><![endif]-->
+
+    <!-- OpenStack Specific CSS -->
+
+    <link rel="stylesheet" href="http://www.openstack.org/themes/openstack/css/dropdown.css" type="text/css" media="screen, projection, print"/>
+
+    <!-- Page Specific CSS -->
+    <link rel="stylesheet" href="http://www.openstack.org/themes/openstack/css/home.css" type="text/css" media="screen, projection, print"/>
+
+    <link rel="stylesheet" type="text/css" href="http://www.openstack.org/themes/openstack/css/main.css" />
+
+    <link rel="stylesheet" href="styles/main.css" />
+
+  </head>
+
+  <body>
+    <script type="text/javascript">header('Zuul');</script>
+
+    <div class="container">
+      <h1> Zuul Status </h1>
+      <p> Zuul is a pipeline oriented project gating and automation
+	system.  Each of the sections below is a separate pipeline
+	configured to automate some portion of the testing or
+	operation of the OpenStack project.  For more information, please see
+	<a href="http://ci.openstack.org/zuul">the Zuul reference manual.</a>
+      </p>
+
+      <p>
+      Queue lengths: <span id="trigger_event_queue_length"></span> events,
+      <span id="result_event_queue_length"></span> results.
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="projects_filter">Filter projects:</label>
+      <span class="projects_filter_container">
+        <input type="text" id="projects_filter" />
+        <!--
+        An embedded 'approved' image.
+        From the famfamfam "Silk" icon set, Creative Commons Attribution 2.5.
+        http://www.famfamfam.com/lab/icons/silk/
+        -->
+        <img class="filter-saved hidden" src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABGdBTUEAAK/INwWK6QAAABl0RVh0U29mdHdhcmUAQWRvYmUgSW1hZ2VSZWFkeXHJZTwAAAKfSURBVDjLpZPrS1NhHMf9O3bOdmwDCWREIYKEUHsVJBI7mg3FvCxL09290jZj2EyLMnJexkgpLbPUanNOberU5taUMnHZUULMvelCtWF0sW/n7MVMEiN64AsPD8/n83uucQDi/id/DBT4Dolypw/qsz0pTMbj/WHpiDgsdSUyUmeiPt2%2BV7SrIM%2BbSss8ySGdR4abQQv6lrui6VxsRonrGCS9VEjSQ9E7CtiqdOZ4UuTqnBHO1X7YXl6Daa4yGq7vWO1D40wVDtj4kWQbn94myPGkCDPdSesczE2sCZShwl8CzcwZ6NiUs6n2nYX99T1cnKqA2EKui6%2BTwphA5k4yqMayopU5mANV3lNQTBdCMVUA9VQh3GuDMHiVcLCS3J4jSLhCGmKCjBEx0xlshjXYhApfMZRP5CyYD%2BUkG08%2Bxt%2B4wLVQZA1tzxthm2tEfD3JxARH7QkbD1ZuozaggdZbxK5kAIsf5qGaKMTY2lAU/rH5HW3PLsEwUYy%2BYCcERmIjJpDcpzb6l7th9KtQ69fi09ePUej9l7cx2DJbD7UrG3r3afQHOyCo%2BV3QQzE35pvQvnAZukk5zL5qRL59jsKbPzdheXoBZc4saFhBS6AO7V4zqCpiawuptwQG%2BUAa7Ct3UT0hh9p9EnXT5Vh6t4C22QaUDh6HwnECOmcO7K%2B6kW49DKqS2DrEZCtfuI%2B9GrNHg4fMHVSO5kE7nAPVkAxKBxcOzsajpS4Yh4ohUPPWKTUh3PaQEptIOr6BiJjcZXCwktaAGfrRIpwblqOV3YKdhfXOIvBLeREWpnd8ynsaSJoyESFphwTtfjN6X1jRO2%2BFxWtCWksqBApeiFIR9K6fiTpPiigDoadqCEag5YUFKl6Yrciw0VOlhOivv/Ff8wtn0KzlebrUYwAAAABJRU5ErkJggg%3D%3D" />
+        <sub>
+          <a href="#" class="save-filter hidden">Save Filter</a>
+        </sub>
+      </span>
+      &nbsp;&nbsp;&nbsp;&nbsp;
+      <label for="expandByDefault">Expand by default:</label>
+      <span class="expand_by_default_container">
+        <input type="checkbox" id="expandByDefault" onchange="toggle_expand_by_default(this)"/>
+      </span>
+      </p>
+    </div>
+
+    <div class="container">
+      <div id="message"/>
+    </div>
+
+    <div id="pipeline-container">
+    </div>
+
+    <div class="container" id="graph-container">
+      <h2> Job Stats </h2>
+
+      <script type="text/javascript">
+$.fn.graphite.defaults.url = "http://graphite.openstack.org/render/";
+
+$("#graph-container").append($(new Image()).addClass('graph').graphite({
+    from: "-24hours",
+    width: 334,
+    height: 180,
+    bgcolor: 'ffffff',
+    fgcolor: '000000',
+    areaMode: 'stacked',
+    target: [
+        "color(alias(sumSeries(stats.gauges.nodepool.target.*.*.*.building), 'Building'), 'ffbf52')",
+        "color(alias(sumSeries(stats.gauges.nodepool.target.*.*.*.ready), 'Available'), '00c868')",
+        "color(alias(sumSeries(stats.gauges.nodepool.target.*.*.*.used), 'In Use'), '6464ff')",
+        "color(alias(sumSeries(stats.gauges.nodepool.target.*.*.*.delete), 'Deleting'), 'c864ff')",
+    ],
+    title: "Test Nodes"
+}));
+
+$("#graph-container").append($(new Image()).addClass('graph').graphite({
+    from: "-24hours",
+    width: 334,
+    height: 180,
+    bgcolor: 'ffffff',
+    fgcolor: '000000',
+    target: [
+        "alias(summarize(sumSeries(stats_counts.zuul.pipeline.*.all_jobs),'1h'),'All Jobs')",
+    ],
+    title: "Zuul Jobs Launched (per Hour)"
+}));
+
+$("#graph-container").append($(new Image()).addClass('graph').graphite({
+    from: "-24hours",
+    width: 334,
+    height: 180,
+    bgcolor: 'ffffff',
+    fgcolor: '000000',
+    target: [
+        "alias(summarize(stats_counts.gerrit.event.comment-added, '1h'), 'Comment added')",
+        "alias(summarize(stats_counts.gerrit.event.patchset-created, '1h'), 'Patchset created')",
+        "alias(summarize(stats_counts.gerrit.event.change-merged, '1h'), 'Change merged')",
+    ],
+    title: "Gerrit Events (per Hour)"
+}));
+      </script>
+    </div>
+
+    <script type="text/javascript">footer();</script>
+  </BODY>
+</html>

@@ -1,0 +1,10 @@
+{
+  "name": "zuul-status",
+  "version": "0.0.1",
+  "dependencies": {
+    "jquery": "2.0.3",
+    "jquery-visibility": "1.0.7",
+    "jquery-graphite": "https://github.com/prestontimmons/graphitejs",    
+    "flot": "0.8.2"
+  }
+}

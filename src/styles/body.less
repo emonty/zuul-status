@@ -1,0 +1,225 @@
+/*
+ * Copyright (c) 2014 Hewlett-Packard Development Company, L.P.
+ *
+ * Licensed under the Apache License, Version 2.0 (the "License"); you may
+ * not use this file except in compliance with the License. You may obtain
+ * a copy of the License at
+ *
+ *         http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Unless required by applicable law or agreed to in writing, software
+ * distributed under the License is distributed on an "AS IS" BASIS, WITHOUT
+ * WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied. See the
+ * License for the specific language governing permissions and limitations
+ * under the License.
+ */
+/**
+ * Styles specific to the overall application.
+ */
+@import url(http://fonts.googleapis.com/css?family=PT+Sans:400,700,400italic,700italic&subset=latin,cyrillic-ext,latin-ext,cyrillic);
+
+.container {
+    width: 1024px;
+}
+label {
+    font-weight: normal;
+}
+#pipeline-container {
+    margin: 0 auto;
+}
+.line {
+    background-image: url('line.png');
+    background-repeat: repeat-y;
+}
+.pipeline {
+    float: left;
+    padding: 4px;
+}
+.pipeline > .header {
+    background: #0000cc;
+    color: white;
+}
+.pipeline > .subhead > .count {
+    float: right;
+    margin-right: 1em;
+    color: #535353;
+    font-size: 11pt;
+}
+.pipeline table {
+    margin: 0 0 2px 0;
+}
+.pipeline table td {
+    margin: 0;
+    padding: 0 0 10px 0;
+}
+td.tree {
+    width: 16px;
+    height: 100%;
+    vertical-align: top;
+}
+.pipeline table td.change-container {
+    padding-left: 4px;
+}
+.change {
+    border: 1px solid #95c7db;
+    padding: 2px;
+}
+.change > .header {
+    background: #E2ECEF;
+    color: black;
+    margin: -2px;
+    padding: 4px;
+}
+.change > .header > .changeid {
+    margin: 1em;
+}
+.change > .header > .time {
+    float: right;
+}
+.change > .hover {
+    background: #F3FDFF;
+}
+.jobs {
+    padding-top: 4px;
+}
+.jobwrapper {
+    display: table;
+    width: 100%;
+}
+.job {
+    display: block;
+    line-height: 1.5;
+}
+.result {
+    float: right;
+}
+.result_success {
+    color: #007f00;
+}
+
+.queue_bad,
+.result_failure {
+    color: #cf2f19;
+}
+.queue_warn,
+.result_unstable {
+    color: #e39f00;
+}
+.queue_good {
+    color: #888888;
+}
+
+#graph-container img {
+    margin-left: 10px;
+}
+#graph-container img:first-of-type {
+    margin-left: 0px;
+}
+a:link {
+    color: #204A87;
+}
+#message p{
+    margin: 0;
+}
+.alertbox {
+    border: 1px solid #e5574d;
+    background: #ffaba5;
+    color: black;
+    padding: 1em;
+    font-size: 12pt;
+    margin: 0pt;
+}
+.change_progress {
+    width: 5em;
+    float: right;
+    /* because other wise this floats up off the line */
+    margin-top: 0.25em;
+}
+.projects_filter_container {
+    display: inline-block;
+    position: relative;
+    top: 1.5em;
+    padding-left: .5em;
+}
+.projects_filter_container input#projects_filter {
+    display: inline-block;
+}
+.projects_filter_container sub {
+    padding: .5em 0;
+    display: block;
+}
+.projects_filter_container sub a.save-filter {
+    text-decoration: underline;
+}
+.projects_filter_container .hidden {
+    visibility: hidden;
+}
+.projects_filter_container img.filter-saved {
+    display: inline-block;
+    position: relative;
+    top: 3px;
+}
+.projects_filter_container img.filter-saved.hidden {
+    display: none;
+}
+
+/** Theming for the progress bars to get them consisten across browers:
+      referenced from http://www.useragentman.com/blog/2012/01/03/cross-browser-html5-progress-bars-in-depth/
+*/
+
+progress,          /* All HTML5 progress enabled browsers */
+progress[role]     /* polyfill */
+{
+      /* Turns off styling - not usually needed, but good to know. */
+      appearance: none;
+      -moz-appearance: none;
+      -webkit-appearance: none;
+
+      /* gets rid of default border in Firefox and Opera. */
+      border: none;
+
+      /* Needs to be in here for Safari polyfill so background images work as expected. */
+      background-size: auto;
+}
+
+/* Polyfill */
+progress[role]:after {
+      background-image: none; /* removes default background from polyfill */
+}
+
+/* Ensure fallback text doesn't appear in polyfill */
+progress[role] strong {
+      display: none;
+}
+
+/** Background color */
+progress,                          /* Firefox  */
+progress[role][aria-valuenow] {    /* Polyfill */
+   background: #e6e6e6 !important; /* !important is needed by the polyfill */
+}
+
+/* Chrome */
+progress::-webkit-progress-bar {
+    background: #e6e6e6;
+}
+
+/** Foreground color */
+/* IE10 */
+progress {
+    color: #6b81a2;
+}
+
+/* Firefox */
+progress::-moz-progress-bar {
+    background: #6b81a2;
+}
+
+/* Chrome */
+progress::-webkit-progress-value {
+    background: #6b81a2;
+}
+
+/* Polyfill */
+progress[aria-valuenow]:before  {
+    background: #6b81a2;
+}
