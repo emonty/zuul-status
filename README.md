@@ -13,59 +13,44 @@ Realtime graphical status for OpenStack zuul.
 
 ### Prerequisites: Dev
 
+* tox
+
+or
+
 * NodeJS 0.10.24 or newer
 * Grunt 0.4.2
 * bower 1.2.8
 
-### Getting setup:
+### Use tox:
 
-There are two options - you can run some scripts which will set up everything
-purely in your local directory without installing anything on your machine,
-or you can actually install the helper commands globally.
+**Run the test suite**
 
-### Just running in the local dir:
+* `tox -enode`
 
-**Install node/npm from packages (optional)
+**Run a local development server**
 
-The bootstrap script, which runs next, will download and build node.js
-from source if it's not installed from packages. If it is installed already
-the bootstrap script will not do that.
+* `tox -evenv server`
 
-* sudo apt-get install nodejs npm
+**Package the distro**
 
-**Bootstrap & build the CI environment**
+* `tox -evenv build`
 
-* `./bin/bootstrap.sh`
-* `./bin/build.sh`
+### Install and work with things more globally:
 
-**Add local commands to your path**
-
-* export PATH=$(pwd)/node_modules/.bin:$(pwd)/.local/bin:$PATH
-
-If you want, you can also just run the following to accomplish that:
-
-* source bin/setenv.sh
-
-### Installing globally:
+**Install node and npm**
 
 * `sudo apt-get install nodejs npm`
-* `sudo npm install -s bower grunt-cli`
 
-You'll probably need to make a symlink somewhere making node link to nodejs,
-because node things expect it to be called node in some cases, and debian
-installs it as nodejs. For instance:
+**Install grunt and bower globall**
 
-* `ln -s /usr/bin/nodejs ~/bin/node
+* `sudo npm install -g grunt-cli bower`
 
-**Bootstrap & build the environment**
+**Install dev and build needs locally in the build directory**
 
-Both of these script will do less things locally if you've installed
-node, npm, grunt and bower globally.
-
-* `./bin/bootstrap.sh`
-* `./bin/build.sh`
-
-### Operating:
+* `npm prune`
+* `npm install`
+* `bower prune`
+* `bower install`
 
 **Run a local development server**
 
