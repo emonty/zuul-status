@@ -49,7 +49,7 @@ If you want, you can also just run the following to accomplish that:
 ### Installing globally:
 
 * `sudo apt-get install nodejs npm`
-* `sudo npm install bower grunt`
+* `sudo npm install -s bower grunt-cli`
 
 You'll probably need to make a symlink somewhere making node link to nodejs,
 because node things expect it to be called node in some cases, and debian
